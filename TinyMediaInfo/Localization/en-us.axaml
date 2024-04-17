@@ -1,0 +1,68 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    x:Class="TinyMediaInfo.Localization.EnglishResourceDictionary">
+    <sys:String x:Key="Local.WindowTitle">TinyMediaInfo v1.2</sys:String>
+    <sys:String x:Key="Local.ErrorTitle">Error</sys:String>
+    <sys:String x:Key="Local.OpenFile">Add File...</sys:String>
+    <sys:String x:Key="Local.OpenFolder">Add Folder...</sys:String>
+    <sys:String x:Key="Local.OpenFileTitle">Add video or audio files</sys:String>
+    <sys:String x:Key="Local.OpenFolderTitle">Select folder</sys:String>
+    <sys:String x:Key="Local.SaveExcelTitle">Export to Excel</sys:String>
+    <sys:String x:Key="Local.ClearList">Clear Items</sys:String>
+    <sys:String x:Key="Local.CancelFilter">Cancel Filter</sys:String>
+    <sys:String x:Key="Local.ExportExcel">Export Excel</sys:String>
+
+    <sys:String x:Key="Local.ItemDetail">Detail Info</sys:String>
+    <sys:String x:Key="Local.ItemOpenFile">Open File</sys:String>
+    <sys:String x:Key="Local.ItemLocateFile">Browse File</sys:String>
+
+    <sys:String x:Key="Local.ListAscending">Ascending</sys:String>
+    <sys:String x:Key="Local.ListDescending">Descending</sys:String>
+    <sys:String x:Key="Local.FilterByItems">By option</sys:String>
+    <sys:String x:Key="Local.FilterByCondition">By criteria</sys:String>
+    <sys:String x:Key="Local.FilterOk">OK</sys:String>
+    <sys:String x:Key="Local.FilerCancel">Cancel</sys:String>
+    <sys:String x:Key="Local.FilerAll">All</sys:String>
+    <sys:String x:Key="Local.FilerInvert">Reverse</sys:String>
+    <sys:String x:Key="Local.FilerReset">Reset</sys:String>
+
+    <sys:String x:Key="Local.FilerNumEqual">Equals</sys:String>
+    <sys:String x:Key="Local.FilerNumNotEqual">Does Not Equal</sys:String>
+    <sys:String x:Key="Local.FilerNumGreater">Greater Than</sys:String>
+    <sys:String x:Key="Local.FilerNumGreaterEqual">Greater Than or Equal</sys:String>
+    <sys:String x:Key="Local.FilerNumLess">Less Than</sys:String>
+    <sys:String x:Key="Local.FilerNumLessEqual">Less Than or Equal</sys:String>
+
+    <sys:String x:Key="Local.FilerTextEqual">Equals</sys:String>
+    <sys:String x:Key="Local.FilerTextNotEqual">Does Not Equal</sys:String>
+    <sys:String x:Key="Local.FilerTextStart">Begins With</sys:String>
+    <sys:String x:Key="Local.FilerTextEnd">Ends With</sys:String>
+    <sys:String x:Key="Local.FilerTextContain">Contains</sys:String>
+    <sys:String x:Key="Local.FilerTextNotContain">Does Not Contain</sys:String>
+
+    <sys:String x:Key="Local.FilerAlso">And</sys:String>
+    <sys:String x:Key="Local.FilerEither">Or</sys:String>
+
+
+    <sys:String x:Key="Local.GridFilePath">File Path</sys:String>
+    <sys:String x:Key="Local.GridFileName">File Name</sys:String>
+    <sys:String x:Key="Local.GridFormatName">Format Name</sys:String>
+    <sys:String x:Key="Local.GridDuration">Duration</sys:String>
+    <sys:String x:Key="Local.GridSize">Size</sys:String>
+    <sys:String x:Key="Local.GridBitRate">Bit Rate kb/s</sys:String>
+    <sys:String x:Key="Local.GridNbStreams">Streams</sys:String>
+    <sys:String x:Key="Local.GridVideoCode">Video Code Name</sys:String>
+    <sys:String x:Key="Local.GridVideoCodeTag">Video Code Tag</sys:String>
+    <sys:String x:Key="Local.GridVideoWidth">Width</sys:String>
+    <sys:String x:Key="Local.GridVideoHeight">Height</sys:String>
+    <sys:String x:Key="Local.GridDisplayAspectRatio">Display Aspect Ratio</sys:String>
+    <sys:String x:Key="Local.GridVideoBitRate">Video Bit Rate kb/s</sys:String>
+    <sys:String x:Key="Local.GridVideoFrameRate">Frame Rate</sys:String>
+    <sys:String x:Key="Local.GridVideoNbFrames">Frames</sys:String>
+    <sys:String x:Key="Local.GridAudioCode">Audio Code Name</sys:String>
+    <sys:String x:Key="Local.GridAudioCodeTag">Audio Code Tag</sys:String>
+    <sys:String x:Key="Local.GridAudioSampleRate">Sample Rate kHz</sys:String>
+    <sys:String x:Key="Local.GridAudioBitRate">Audio Bit Rate kb/s</sys:String>
+    <sys:String x:Key="Local.GridAudioChannels">Channels</sys:String>
+</ResourceDictionary>

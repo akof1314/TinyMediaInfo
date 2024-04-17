@@ -1,0 +1,129 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:TinyMediaInfo.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TinyMediaInfo.Views.MediaFilterView"
+             x:DataType="vm:MediaFilterViewModel">
+
+    <Design.DataContext>
+        <vm:MediaFilterViewModel/>
+    </Design.DataContext>
+
+    <StackPanel Width="300" IsEnabled="{Binding EnableFilterView}">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+					Command="{Binding SortMediaFilesAscendingCommand}" Content="{DynamicResource Local.ListAscending}"></Button>
+			<Button Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+					Command="{Binding SortMediaFilesDescendingCommand}" Content="{DynamicResource Local.ListDescending}"></Button>
+		</Grid>
+		<TabControl SelectedIndex="{Binding ShowFilterTabIndex}">
+			<TabItem Header="{DynamicResource Local.FilterByItems}" IsVisible="{Binding ShowFilterByItems}">
+				<StackPanel>
+					<Grid Margin="0,0,0,6">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Button Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+								Command="{Binding SelectAllFilterItemsCommand}" Content="{DynamicResource Local.FilerAll}"></Button>
+						<Button Grid.Column="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+								Command="{Binding InvertFilterItemsCommand}" Content="{DynamicResource Local.FilerInvert}"></Button>
+					</Grid>
+					<ListBox Height="240" ItemsSource="{Binding CheckboxFilters}">
+						<ListBox.ItemContainerTheme>
+							<ControlTheme TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+								<Setter Property="Padding" Value="12,2,12,2"/>
+							</ControlTheme>
+						</ListBox.ItemContainerTheme>
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<StackPanel>
+									<CheckBox Content="{Binding FilterDesc}" IsChecked="{Binding IsChecked}"></CheckBox>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</TabItem>
+			<TabItem Header="{DynamicResource Local.FilterByCondition}">
+				<StackPanel Height="278">
+                    <Grid Margin="0,0,0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                                Command="{Binding ResetAdvancedFilterCommand}" Content="{DynamicResource Local.FilerReset}"></Button>
+                    </Grid>
+                    <StackPanel IsVisible="{Binding AdvancedFilter.FilterLongType}">
+						<ComboBox SelectedIndex="{Binding AdvancedFilter.FilterType}" HorizontalAlignment="Stretch" Margin="0,6,0,0">
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumNotEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumGreater}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumGreaterEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumLess}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumLessEqual}"></ComboBoxItem>
+						</ComboBox>
+						<TextBox Margin="0,6,0,0" Text="{Binding AdvancedFilter.FilterValue}"></TextBox>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,0">
+							<RadioButton GroupName="FilterRule" Content="{DynamicResource Local.FilerAlso}" IsChecked="{Binding AdvancedFilter.PredicateAnd}"></RadioButton>
+							<RadioButton GroupName="FilterRule" Content="{DynamicResource Local.FilerEither}" IsChecked="{Binding !AdvancedFilter.PredicateAnd}"></RadioButton>
+						</StackPanel>
+						<ComboBox SelectedIndex="{Binding AdvancedFilter.FilterType2}" HorizontalAlignment="Stretch" Margin="0,6,0,0">
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumNotEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumGreater}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumGreaterEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumLess}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerNumLessEqual}"></ComboBoxItem>
+						</ComboBox>
+						<TextBox Margin="0,6,0,0" Text="{Binding AdvancedFilter.FilterValue2}"></TextBox>
+					</StackPanel>
+					<StackPanel IsVisible="{Binding !AdvancedFilter.FilterLongType}">
+						<ComboBox SelectedIndex="{Binding AdvancedFilter.FilterType}" HorizontalAlignment="Stretch" Margin="0,6,0,0">
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextNotEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextStart}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextEnd}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextContain}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextNotContain}"></ComboBoxItem>
+						</ComboBox>
+						<TextBox Margin="0,6,0,0" Text="{Binding AdvancedFilter.FilterValue}"></TextBox>
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,6,0,0">
+							<RadioButton GroupName="FilterRule2" Content="{DynamicResource Local.FilerAlso}" IsChecked="{Binding AdvancedFilter.PredicateAnd}"></RadioButton>
+							<RadioButton GroupName="FilterRule2" Content="{DynamicResource Local.FilerEither}" IsChecked="{Binding !AdvancedFilter.PredicateAnd}"></RadioButton>
+						</StackPanel>
+						<ComboBox SelectedIndex="{Binding AdvancedFilter.FilterType2}" HorizontalAlignment="Stretch" Margin="0,6,0,0">
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextNotEqual}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextStart}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextEnd}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextContain}"></ComboBoxItem>
+							<ComboBoxItem Content="{DynamicResource Local.FilerTextNotContain}"></ComboBoxItem>
+						</ComboBox>
+						<TextBox Margin="0,6,0,0" Text="{Binding AdvancedFilter.FilterValue2}"></TextBox>
+					</StackPanel>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+		<Grid Margin="0,6,0,0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+				<ColumnDefinition Width="*"></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<Button Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+					Command="{Binding CloseFilterWindowCommand}" Content="{DynamicResource Local.FilerCancel}"></Button>
+			<Button Grid.Column="2" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+					Command="{Binding StartFilterItemsCommand}" Content="{DynamicResource Local.FilterOk}"></Button>
+		</Grid>
+	</StackPanel>
+</UserControl>
