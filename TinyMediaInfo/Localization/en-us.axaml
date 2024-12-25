@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     x:Class="TinyMediaInfo.Localization.EnglishResourceDictionary">
-    <sys:String x:Key="Local.WindowTitle">TinyMediaInfo v1.2</sys:String>
+    <sys:String x:Key="Local.WindowTitle">TinyMediaInfo v1.3</sys:String>
     <sys:String x:Key="Local.ErrorTitle">Error</sys:String>
     <sys:String x:Key="Local.OpenFile">Add File...</sys:String>
     <sys:String x:Key="Local.OpenFolder">Add Folder...</sys:String>
@@ -58,7 +58,8 @@
     <sys:String x:Key="Local.GridVideoHeight">Height</sys:String>
     <sys:String x:Key="Local.GridDisplayAspectRatio">Display Aspect Ratio</sys:String>
     <sys:String x:Key="Local.GridVideoBitRate">Video Bit Rate kb/s</sys:String>
-    <sys:String x:Key="Local.GridVideoFrameRate">Frame Rate</sys:String>
+    <sys:String x:Key="Local.GridVideoModeFrameRate">Frame Rate Mode</sys:String>
+    <sys:String x:Key="Local.GridVideoFrameRate">Avg Frame Rate</sys:String>
     <sys:String x:Key="Local.GridVideoNbFrames">Frames</sys:String>
     <sys:String x:Key="Local.GridAudioCode">Audio Code Name</sys:String>
     <sys:String x:Key="Local.GridAudioCodeTag">Audio Code Tag</sys:String>

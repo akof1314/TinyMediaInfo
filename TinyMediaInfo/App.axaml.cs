@@ -1,4 +1,4 @@
-using System.Globalization;
+ï»¿using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -33,7 +33,7 @@ namespace TinyMediaInfo
                 return;
             }
 
-            // ±ÜÃâ¶¯Ì¬¼ÓÔØ
+            // é¿å…åŠ¨æ€åŠ è½½
             Current!.Resources.MergedDictionaries[0] = new EnglishResourceDictionary();
         }
 

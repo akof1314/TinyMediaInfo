@@ -51,6 +51,8 @@ namespace TinyMediaInfo.ViewModels
 
         [ExcelColumn(Ignore = true)]
         public long VideoBitRateLong { get; set; } = 0;
+        
+        public string VideoModeFrameRate {get;set;} = String.Empty;
 
         public string VideoFrameRate {get;set;} = String.Empty;
 

@@ -30,14 +30,12 @@ namespace TinyMediaInfo.ViewModels
         /// <summary>
         /// 显示处理的进度条
         /// </summary>
-        [ObservableProperty]
-        private bool _showProgressBar;
+        [ObservableProperty] private bool _showProgressBar;
 
         /// <summary>
         /// 进度条的值
         /// </summary>
-        [ObservableProperty]
-        private int _valueProgressBar;
+        [ObservableProperty] private int _valueProgressBar;
 
         /// <summary>
         /// 标记当前正在运行处理线程
@@ -87,8 +85,7 @@ namespace TinyMediaInfo.ViewModels
         /// <summary>
         /// 显示详情
         /// </summary>
-        [ObservableProperty]
-        private bool _showDetailPanel;
+        [ObservableProperty] private bool _showDetailPanel;
 
         /// <summary>
         /// 详情
@@ -109,46 +106,57 @@ namespace TinyMediaInfo.ViewModels
 
             _sourceMediaList = new List<MediaViewModel>();
             _viewMediaList = new ObservableCollection<MediaViewModel>();
+            var isZh = CultureInfo.CurrentCulture.Name == "zh-CN";
 
             Source = new FlatTreeDataGridSource<MediaViewModel>(_viewMediaList)
             {
                 Columns =
                 {
-                    new MediaColumn<string>("Local.GridFilePath", x=>x.FilePath, 100, x=>x.FilePath, null, "FilePath"),
-                    new MediaColumn<string>("Local.GridFileName", x=>x.FileName, 120, x=>x.FileName, null, "FileName"),
-                    new MediaColumn<string>("Local.GridFormatName", x=>x.FormatName, 95, x=>x.FormatName, _groupModel.FormatName, "FormatName"),
-                    new MediaColumn<long>("Local.GridNbStreams", x=>x.NbStreams, 62, x=>x.NbStreamsLong, _groupModel.NbStreams, "NbStreams"),
-                    new MediaColumn<long>("Local.GridSize", x=>x.Size, 90, x=>x.SizeLong, null, "Size"),
-                    new MediaColumn<long>("Local.GridDuration", x=>x.Duration, 90, x=>x.DurationLong, null, "Duration"),
-                    new MediaColumn<long>("Local.GridBitRate", x=>x.BitRate, 62, x=>x.BitRateLong, null, "BitRate"),
-                    new MediaColumn<string>("Local.GridVideoCode", x=>x.VideoCode, 105, x=>x.VideoCode, _groupModel.VideoCode, "VideoCode"),
-                    new MediaColumn<string>("Local.GridVideoCodeTag", x=>x.VideoCodeTag, 105, x=>x.VideoCodeTag, _groupModel.VideoCodeTag, "VideoCodeTag"),
-                    new MediaColumn<long>("Local.GridVideoWidth", x=>x.VideoWidth, 60, x=>x.VideoWidthLong, _groupModel.VideoWidth, "VideoWidth"),
-                    new MediaColumn<long>("Local.GridVideoHeight", x=>x.VideoHeight, 60, x=>x.VideoHeightLong, _groupModel.VideoHeight, "VideoHeight"),
-                    new MediaColumn<string>("Local.GridDisplayAspectRatio", x=>x.DisplayAspectRatio, 90, x=>x.DisplayAspectRatio, _groupModel.DisplayAspectRatio, "DisplayAspectRatio"),
-                    new MediaColumn<long>("Local.GridVideoBitRate", x=>x.VideoBitRate, 93, x=>x.VideoBitRateLong, null, "VideoBitRate"),
-                    new MediaColumn<string>("Local.GridVideoFrameRate", x=>x.VideoFrameRate, 65, x=>x.VideoFrameRate, _groupModel.VideoFrameRate, "VideoFrameRate"),
-                    new MediaColumn<long>("Local.GridVideoNbFrames", x=>x.VideoNbFrames, 65, x=>x.VideoNbFramesLong, null, "VideoNbFrames"),
-                    new MediaColumn<string>("Local.GridAudioCode", x=>x.AudioCode, 105, x=>x.AudioCode, _groupModel.AudioCode, "AudioCode"),
-                    new MediaColumn<string>("Local.GridAudioCodeTag", x=>x.AudioCodeTag, 105, x=>x.AudioCodeTag, _groupModel.AudioCodeTag, "AudioCodeTag"),
-                    new MediaColumn<long>("Local.GridAudioSampleRate", x=>x.AudioSampleRate, 75, x=>x.AudioSampleRateLong, _groupModel.AudioSampleRate, "AudioSampleRate"),
-                    new MediaColumn<long>("Local.GridAudioBitRate", x=>x.AudioBitRate, 93, x=>x.AudioBitRateLong, null, "AudioBitRate"),
-                    new MediaColumn<long>("Local.GridAudioChannels", x=>x.AudioChannels, 80, x=>x.AudioChannelsLong, _groupModel.AudioChannels, "AudioChannels"),
+                    new MediaColumn<string>("Local.GridFilePath", x => x.FilePath,
+                        100, x => x.FilePath, null, "FilePath"), // 1
+                    new MediaColumn<string>("Local.GridFileName", x => x.FileName,
+                        120, x => x.FileName, null, "FileName"), // 2
+                    new MediaColumn<string>("Local.GridFormatName", x => x.FormatName,
+                        isZh ? 95 : 82, x => x.FormatName, _groupModel.FormatName, "FormatName"), // 3
+                    new MediaColumn<long>("Local.GridNbStreams", x => x.NbStreams,
+                        isZh ? 62 : 63, x => x.NbStreamsLong, _groupModel.NbStreams, "NbStreams"),
+                    new MediaColumn<long>("Local.GridSize", x => x.Size,
+                        90, x => x.SizeLong, null, "Size"),
+                    new MediaColumn<long>("Local.GridDuration", x => x.Duration,
+                        isZh ? 92 : 87, x => x.DurationLong, null, "Duration"), // 6
+                    new MediaColumn<long>("Local.GridBitRate", x => x.BitRate,
+                        62, x => x.BitRateLong, null, "BitRate"),
+                    new MediaColumn<string>("Local.GridVideoCode", x => x.VideoCode,
+                        105, x => x.VideoCode, _groupModel.VideoCode, "VideoCode"),
+                    new MediaColumn<string>("Local.GridVideoCodeTag", x => x.VideoCodeTag,
+                        isZh ? 105 : 75, x => x.VideoCodeTag, _groupModel.VideoCodeTag, "VideoCodeTag"), // 9
+                    new MediaColumn<long>("Local.GridVideoWidth", x => x.VideoWidth,
+                        isZh ? 60 : 69, x => x.VideoWidthLong, _groupModel.VideoWidth, "VideoWidth"), // 10
+                    new MediaColumn<long>("Local.GridVideoHeight", x => x.VideoHeight,
+                        isZh ? 60 : 73, x => x.VideoHeightLong, _groupModel.VideoHeight, "VideoHeight"), // 11
+                    new MediaColumn<string>("Local.GridDisplayAspectRatio", x => x.DisplayAspectRatio,
+                        90, x => x.DisplayAspectRatio, _groupModel.DisplayAspectRatio, "DisplayAspectRatio"),
+                    new MediaColumn<long>("Local.GridVideoBitRate", x => x.VideoBitRate,
+                        isZh ? 93 : 80, x => x.VideoBitRateLong, null, "VideoBitRate"),
+                    new MediaColumn<string>("Local.GridVideoModeFrameRate", x => x.VideoModeFrameRate,
+                        isZh ? 69 : 99, x => x.VideoModeFrameRate, _groupModel.VideoModeFrameRate,
+                        "VideoModeFrameRate"),
+                    new MediaColumn<string>("Local.GridVideoFrameRate", x => x.VideoFrameRate,
+                        isZh ? 69 : 99, x => x.VideoFrameRate, _groupModel.VideoFrameRate, "VideoFrameRate"),
+                    new MediaColumn<long>("Local.GridVideoNbFrames", x => x.VideoNbFrames,
+                        65, x => x.VideoNbFramesLong, null, "VideoNbFrames"),
+                    new MediaColumn<string>("Local.GridAudioCode", x => x.AudioCode,
+                        105, x => x.AudioCode, _groupModel.AudioCode, "AudioCode"),
+                    new MediaColumn<string>("Local.GridAudioCodeTag", x => x.AudioCodeTag,
+                        105, x => x.AudioCodeTag, _groupModel.AudioCodeTag, "AudioCodeTag"),
+                    new MediaColumn<long>("Local.GridAudioSampleRate", x => x.AudioSampleRate,
+                        75, x => x.AudioSampleRateLong, _groupModel.AudioSampleRate, "AudioSampleRate"),
+                    new MediaColumn<long>("Local.GridAudioBitRate", x => x.AudioBitRate,
+                        93, x => x.AudioBitRateLong, null, "AudioBitRate"),
+                    new MediaColumn<long>("Local.GridAudioChannels", x => x.AudioChannels,
+                        80, x => x.AudioChannelsLong, _groupModel.AudioChannels, "AudioChannels"),
                 },
             };
-
-            if (CultureInfo.CurrentCulture.Name != "zh-CN")
-            {
-                Source.Columns.SetColumnWidth(3, new GridLength(82));
-                Source.Columns.SetColumnWidth(6, new GridLength(79));
-                Source.Columns.SetColumnWidth(9, new GridLength(75));
-                Source.Columns.SetColumnWidth(10, new GridLength(75));
-                Source.Columns.SetColumnWidth(11, new GridLength(110));
-                Source.Columns.SetColumnWidth(13, new GridLength(80));
-                Source.Columns.SetColumnWidth(14, new GridLength(80));
-                Source.Columns.SetColumnWidth(17, new GridLength(87));
-                Source.Columns.SetColumnWidth(19, new GridLength(90));
-            }
 
             _detailViewList = new ObservableCollection<MediaDetailModel>();
             DetailSource = new HierarchicalTreeDataGridSource<MediaDetailModel>(_detailViewList)
@@ -229,7 +237,8 @@ namespace TinyMediaInfo.ViewModels
 
         public void ParseMediaFiles()
         {
-            if (!_runningParse && FFmpegHelper.IsEnabled() && (_processIndexList.Count > 0 || _processDetailIndexList.Count > 0))
+            if (!_runningParse && FFmpegHelper.IsEnabled() &&
+                (_processIndexList.Count > 0 || _processDetailIndexList.Count > 0))
             {
                 Task.Run(ThreadParseMedia);
             }
@@ -264,7 +273,8 @@ namespace TinyMediaInfo.ViewModels
                             }
                             else
                             {
-                                ValueProgressBar = (int)((_processCount - _processIndexList.Count) * 1f / _processCount * 100);
+                                ValueProgressBar = (int)((_processCount - _processIndexList.Count) * 1f /
+                                    _processCount * 100);
                             }
                         });
                     }
@@ -317,16 +327,15 @@ namespace TinyMediaInfo.ViewModels
             List<MediaViewModel>? orderList = null;
             if (column is MediaColumn<long> mediaColumn)
             {
-                orderList = (direction == ListSortDirection.Ascending ?
-                    _sourceMediaList.OrderBy(mediaColumn.SortSelector) :
-                    _sourceMediaList.OrderByDescending(mediaColumn.SortSelector)).ToList();
-
+                orderList = (direction == ListSortDirection.Ascending
+                    ? _sourceMediaList.OrderBy(mediaColumn.SortSelector)
+                    : _sourceMediaList.OrderByDescending(mediaColumn.SortSelector)).ToList();
             }
             else if (column is MediaColumn<string> mediaColumn2)
             {
-                orderList = (direction == ListSortDirection.Ascending ?
-                    _sourceMediaList.OrderBy(mediaColumn2.SortSelector) :
-                    _sourceMediaList.OrderByDescending(mediaColumn2.SortSelector)).ToList();
+                orderList = (direction == ListSortDirection.Ascending
+                    ? _sourceMediaList.OrderBy(mediaColumn2.SortSelector)
+                    : _sourceMediaList.OrderByDescending(mediaColumn2.SortSelector)).ToList();
             }
 
             if (orderList != null)
@@ -357,7 +366,8 @@ namespace TinyMediaInfo.ViewModels
                             {
                                 if (!checkboxFilterItemModel.IsChecked)
                                 {
-                                    filterFuncList.Add(model => baseColumn.ValueSelector(model) == checkboxFilterItemModel.FilterName);
+                                    filterFuncList.Add(model =>
+                                        baseColumn.ValueSelector(model) == checkboxFilterItemModel.FilterName);
                                     isShowFilterIcon = true;
                                 }
                             }
@@ -371,17 +381,21 @@ namespace TinyMediaInfo.ViewModels
                             {
                                 if (longColumn.ExcelKey == "Size")
                                 {
-                                    filterFuncList.Add(model => !filterColumn.AdvancedFilter.IsByteFilter(longColumn.SortSelector(model)));
+                                    filterFuncList.Add(model =>
+                                        !filterColumn.AdvancedFilter.IsByteFilter(longColumn.SortSelector(model)));
                                 }
                                 else
                                 {
-                                    filterFuncList.Add(model => !filterColumn.AdvancedFilter.IsLongFilter(longColumn.SortSelector(model)));
+                                    filterFuncList.Add(model =>
+                                        !filterColumn.AdvancedFilter.IsLongFilter(longColumn.SortSelector(model)));
                                 }
+
                                 isShowFilterIcon = true;
                             }
                             else if (filterColumn is MediaColumn<string> strColumn)
                             {
-                                filterFuncList.Add(model => !filterColumn.AdvancedFilter.IsStrFilter(strColumn.SortSelector(model)));
+                                filterFuncList.Add(model =>
+                                    !filterColumn.AdvancedFilter.IsStrFilter(strColumn.SortSelector(model)));
                                 isShowFilterIcon = true;
                             }
                         }
@@ -439,6 +453,7 @@ namespace TinyMediaInfo.ViewModels
                     }
                 }
             }
+
             ApplyFilters();
         }
 
@@ -483,7 +498,8 @@ namespace TinyMediaInfo.ViewModels
             }
         }
 
-        private void OnRowSelectionChanged(object? sender, TreeSelectionModelSelectionChangedEventArgs<MediaViewModel> e)
+        private void OnRowSelectionChanged(object? sender,
+            TreeSelectionModelSelectionChangedEventArgs<MediaViewModel> e)
         {
             ShowDetailPanel = false;
         }

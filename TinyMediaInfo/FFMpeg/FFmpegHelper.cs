@@ -178,7 +178,10 @@ internal static class FFmpegHelper
 
                 mediaView.VideoNbFramesLong = inVideoStream.Value.NbFrames;
                 mediaView.VideoNbFrames = inVideoStream.Value.NbFrames.ToString();
-                mediaView.VideoFrameRate = inVideoStream.Value.RFrameRate.ToDouble().ToString("F3");
+                mediaView.VideoModeFrameRate =
+                    inVideoStream.Value.RFrameRate != inVideoStream.Value.AvgFrameRate ? "VFR" : "CFR";
+                mediaGroup.VideoModeFrameRate.AddFilterCount(mediaView.VideoModeFrameRate);
+                mediaView.VideoFrameRate = inVideoStream.Value.AvgFrameRate.ToDouble().ToString("F3");
 
                 mediaGroup.VideoFrameRate.AddFilterCount(mediaView.VideoFrameRate);
             }

@@ -94,6 +94,10 @@
                             </ContextMenu>
                         </Setter>
                     </Style>
+                    <Style Selector="ScrollViewer#PART_ScrollViewer">
+                        <Setter Property="AllowAutoHide" Value="False"></Setter>
+                        <Setter Property="Padding" Value="0,0,20,0"></Setter>
+                    </Style>
                 </TreeDataGrid.Styles>
                 <FlyoutBase.AttachedFlyout>
                     <Flyout Placement="BottomEdgeAlignedLeft">

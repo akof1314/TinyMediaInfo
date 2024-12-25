@@ -15,6 +15,8 @@
         public MediaCheckboxFilterColumnModel VideoHeight {get;} = new MediaCheckboxFilterColumnModel();
 
         public MediaCheckboxFilterColumnModel DisplayAspectRatio {get;} = new MediaCheckboxFilterColumnModel();
+        
+        public MediaCheckboxFilterColumnModel VideoModeFrameRate {get;} = new MediaCheckboxFilterColumnModel();
 
         public MediaCheckboxFilterColumnModel VideoFrameRate {get;} = new MediaCheckboxFilterColumnModel();
 
